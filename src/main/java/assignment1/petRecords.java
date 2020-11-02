@@ -179,52 +179,52 @@ public class petRecords {
         System.out.printf("+----------------------+%n");
         System.out.printf(String.valueOf(petsFound) + " rows in set.%n");
     }
-    
+
     public static ArrayList < petRecord > UpdatePetRecord(ArrayList < petRecord > petArray) {
         System.out.println(" ");
         ViewPetRecords(petArray);
-        
+
         System.out.println("Enter the pet ID you want to update: ");
         Scanner in = new Scanner(System.in);
-        int myInputID = in.nextInt();
+        int myInputID = in .nextInt();
         System.out.println("Enter new name and new age: ");
         Scanner in2 = new Scanner(System.in);
         String myInputRecord = in2.nextLine();
-        
+
         petRecord myPet = petArray.get(myInputID);
         String orgName = myPet.petName;
         int orgAge = myPet.petAge;
-        
+
         int spaceAt = myInputRecord.indexOf(" ");
         String petName = myInputRecord.substring(0, spaceAt);
         int petAge = Integer.parseInt(myInputRecord.substring(spaceAt + 1));
-        
+
         myPet.petName = petName;
         myPet.petAge = petAge;
-        
+
         petArray.set(myInputID, myPet);
-        
+
         System.out.println(orgName + " " + String.valueOf(orgAge) + " changed to " + petName + " " + String.valueOf(petAge));
-        
+
         return petArray;
     }
-    
+
     public static ArrayList < petRecord > RemovePetRecord(ArrayList < petRecord > petArray) {
         System.out.println(" ");
         ViewPetRecords(petArray);
-        
+
         System.out.println("Enter the pet ID to remove: ");
         Scanner in = new Scanner(System.in);
-        int myInputID = in.nextInt();
-        
+        int myInputID = in .nextInt();
+
         petRecord myPet = petArray.get(myInputID);
         String orgName = myPet.petName;
         int orgAge = myPet.petAge;
-        
+
         petArray.remove(myInputID);
-        
+
         System.out.println(orgName + " " + String.valueOf(orgAge) + " is removed.");
-        
+
         return petArray;
     }
 }
