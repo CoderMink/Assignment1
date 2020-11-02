@@ -41,8 +41,10 @@ public class petRecords {
                 case 4:
                     break;
                 case 5:
+                    SearchPetRecordsByName(petArray);
                     break;
                 case 6:
+                    SearchPetRecordsByAge(petArray);
                     break;
                 default:
                     break;
@@ -115,6 +117,63 @@ public class petRecords {
         }
         System.out.printf("+----------------------+%n");
         System.out.printf(String.valueOf(arrayLength) + " rows in set.%n");
+    }
+    
+    public static void SearchPetRecordsByName(ArrayList < petRecord > petArray) {
+        int arrayLength = petArray.size();
+        int petsFound = 0;
+        
+        System.out.println(" ");
+        System.out.println("Enter a name to search: ");
+        Scanner in = new Scanner(System.in);
+        String myInput = in.nextLine();
+        System.out.println(" ");
+        
+        System.out.printf("+----------------------+%n");
+        System.out.printf("| ID | NAME      | AGE |%n");
+        System.out.printf("+----------------------+%n");
+        
+        for (int x = 0; x < arrayLength; x++) {
+            petRecord myPet = new petRecord();
+            myPet = petArray.get(x);
+            
+            if (Objects.equals(myPet.petName, myInput)) {
+                System.out.printf("|  " + String.valueOf(x) + " | " + myPet.petName + String.format("%1$" + (10 - myPet.petName.length()) + "s", "") + "| " + String.valueOf(myPet.petAge) + String.format("%1$" + (4 - String.valueOf(myPet.petAge).length()) + "s", "") + "|%n");
+                petsFound = petsFound + 1;
+            }
+
+        }
+        System.out.printf("+----------------------+%n");
+        System.out.printf(String.valueOf(petsFound) + " rows in set.%n");
+        
+    }
+    
+    public static void SearchPetRecordsByAge(ArrayList < petRecord > petArray) {
+        int arrayLength = petArray.size();
+        int petsFound = 0;
+        
+        System.out.println(" ");
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter age to search: ");
+        int myInput = in.nextInt();
+        System.out.println(" ");
+        
+        System.out.printf("+----------------------+%n");
+        System.out.printf("| ID | NAME      | AGE |%n");
+        System.out.printf("+----------------------+%n");
+        
+        for (int x = 0; x < arrayLength; x++) {
+            petRecord myPet = new petRecord();
+            myPet = petArray.get(x);
+            
+            if (Objects.equals(myPet.petAge, myInput)) {
+                System.out.printf("|  " + String.valueOf(x) + " | " + myPet.petName + String.format("%1$" + (10 - myPet.petName.length()) + "s", "") + "| " + String.valueOf(myPet.petAge) + String.format("%1$" + (4 - String.valueOf(myPet.petAge).length()) + "s", "") + "|%n");
+                petsFound = petsFound + 1;
+            }
+
+        }
+        System.out.printf("+----------------------+%n");
+        System.out.printf(String.valueOf(petsFound) + " rows in set.%n");
     }
 
 }
